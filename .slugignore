@@ -1,1 +1,39 @@
+# Ignore virtual environment
+venv/
+env/
 
+# Ignore __pycache__ directories and compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Jupyter notebooks used for development and analysis
+jupyter_notebooks/
+*.ipynb
+
+# Ignore dataset files (handled by GFS)
+inputs/cherry-leaves_dataset/
+datasets/collection/cherry-leaves/
+
+
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore test directories and files
+test/
+tests/
+
+# Ignore configuration files not needed in production
+.vscode/
+
+# Ignore Git files
+.git/
+.gitignore
+
+# Ignore Docker files (if not needed for production)
+.gitpod.dockerfile
+
+# Ignore other temporary files
+.DS_Store
