@@ -8,8 +8,7 @@ __pycache__/
 *.pyo
 
 # Ignore Jupyter notebooks used for development and analysis
-jupyter_notebooks/
-*.ipynb
+
 
 
 # Ignore log files
