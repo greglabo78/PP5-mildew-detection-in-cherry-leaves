@@ -11,12 +11,6 @@ __pycache__/
 jupyter_notebooks/
 *.ipynb
 
-# Ignore dataset files (handled by GFS)
-inputs/cherry-leaves_dataset/
-datasets/collection/cherry-leaves/
-
-# Ignore output files from training and evaluation
-outputs/v1
 
 # Ignore log files
 *.log
