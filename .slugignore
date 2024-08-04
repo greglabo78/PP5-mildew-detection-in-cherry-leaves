@@ -11,8 +11,7 @@ __pycache__/
 jupyter_notebooks/
 *.ipynb
 
-# Ignore dataset files (handled by GFS)
-inputs/cherry-leaves_dataset/
+
 
 
 
