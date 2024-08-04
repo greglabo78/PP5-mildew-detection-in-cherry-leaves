@@ -16,7 +16,7 @@ inputs/cherry-leaves_dataset/
 datasets/collection/cherry-leaves/
 
 # Ignore output files from training and evaluation
-outputs/
+
 
 # Ignore log files
 *.log
