@@ -13,7 +13,7 @@ jupyter_notebooks/
 
 # Ignore dataset files (handled by GFS)
 inputs/cherry-leaves_dataset/
-datasets/collection/cherry-leaves/
+
 
 
 
