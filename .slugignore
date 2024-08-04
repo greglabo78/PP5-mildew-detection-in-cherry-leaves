@@ -2,15 +2,6 @@
 venv/
 env/
 
-# Ignore __pycache__ directories and compiled Python files
-__pycache__/
-*.pyc
-*.pyo
-
-# Ignore Jupyter notebooks used for development and analysis
-
-
-
 # Ignore log files
 *.log
 logs/
