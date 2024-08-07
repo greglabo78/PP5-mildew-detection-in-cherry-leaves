@@ -2,6 +2,8 @@
 
 # Mildew Dectection in Cherry Leaves
 
+![Powdery Mildew Detector Am i responsive Image](assets/readme_images/amiresponsive.png)
+
 ## Project Description
 
 Marianne McGuineys, head of IT and Innovation at Farmy & Foods, is facing a challenge with their cherry plantations presenting powdery mildew, a fungal disease affecting a wide range of plants. Cherry plantation is one of the finest products in the company's portfolio, and they are concerned about supplying the market with a compromised quality product.
@@ -11,6 +13,22 @@ Currently, the process involves manually verifying if a cherry tree contains pow
 To save time, the IT team suggested developing a Machine Learning (ML) system capable of instantly detecting whether a cherry leaf is healthy or has powdery mildew using an image of the leaf. A similar process is in place for other crops for pest detection, and success in this initiative could lead to replicating the project for all other crops. The dataset comprises cherry leaf images provided by Farmy & Foods, taken from their crops.
 
 This project aims to build a dashboard to detect whether a cherry leaf is healthy or has powdery mildew.
+
+## Table of Contents
+1. [Dataset Content](#dataset-content)
+2. [Business Requirements](#business-requirements)
+3. [Hypothesis and Validation](#hypothesis-and-validation)
+4. [Rationale for the Model](#rationale-for-the-model)
+5. [Rationale for Mapping Business Requirements to Data Visualizations and ML Tasks](#rationale-for-mapping-business-requirements-to-data-visualizations-and-ml-tasks)
+6. [ML Business Case](#ml-business-case)
+7. [Dashboard design](#dashboard-design)
+8. [Unfixed Bugs](#unfixed-bugs)
+9. [The methodology known as the Cross-Industry Standard Process for Data Mining (CRISP-DM)](#the-methodology-known-as-the-cross-industry-standard-process-for-data-mining-crisp-dm)
+10. [Deployment](#deployment)
+11. [Technology Used](#technologies-used)
+12. [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
+13. [Acknowledgements](#acknowledgements)
+14. [Credits](#credits)
 
 
 ## Dataset Content
@@ -39,7 +57,7 @@ Summary:
 **Hypothesis:** A neural network with specific architectural choices (e.g., using softmax  in the output layer) will yield better classification performance.
 **Validation:** Train models using softmax configurations and optimize performance metrics, such as accuracy and loss, using learning curves and validation results.
 
-### Hypothesis 1
+#### Hypothesis 1
 
 **Hypothesis:** Infected leaves have distinct visual features that differentiate them from healthy leaves.
 
@@ -65,9 +83,13 @@ The mean and standard deviation are calculated separately for each channel. Sinc
 
 2. Observation
 A visual montage highlights the clear distinctions between healthy leaves and those infected with mildew.
+![healthy montage](assets/readme_images/healthy_leaves_montage.png)
+![infected leaves](assets/readme_images/Infected_leaves.png)
 
 
 There is no visible difference betweeen avaerage and variabilty images to enable the identification of affected leaves.
+
+![difference in samples](assets/readme_images/difference_in_leaves.png)
 
 3. Conclusion
 The model successfully identified the differences, learning to distinguish and generalize for accurate predictions. A well-trained model predicts classes on a data batch without overfitting, enabling it to generalize and accurately forecast future observations by recognizing general patterns rather than memorizing specific relationships from the training dataset.
@@ -89,6 +111,8 @@ For multiclass classification with two output nodes, the softmax function is use
 
 2. Obseervation
 The model training output is depicted in two graphs: one for loss and one for accuracy, both showing training and validation metrics.
+
+![ML Performance](assets/readme_images/ml_performance.png)
 
 #### Loss Graph:
 1. **Initial Decrease**: Both training and validation loss start high and decrease significantly in the first few epochs, indicating effective learning.
@@ -117,7 +141,7 @@ Key terms include:
 A good fit is shown by decreasing training and validation loss to a stable point with minimal gap. A small generalization gap between training and validation loss/accuracy indicates good performance. Overfitting occurs if training continues beyond this point, which is why early stopping is often used.
 
 
-### Rationale for the Model
+## Rationale for the Model
 
 The model is designed to efficiently classify cherry leaves as healthy or infected with powdery mildew. Below are the architectural choices and their rationale:
 
@@ -162,13 +186,13 @@ These user stories are addressed by implementing the following tasks in the Stre
 The client wants to determine if a given cherry leaf is affected by powdery mildew.
 
 #### User Story:
-- As a client, I want a machine learning model to predict with at least 86% accuracy whether a cherry leaf is healthy or infected.
+- As a client, I want a machine learning model to predict with at least 97% accuracy whether a cherry leaf is healthy or infected.
 
 This user story is addressed by the following tasks presented in the Streamlit dashboard and data visualization notebook:
 - Explanation of the rationale behind the deployed ML model.
 - An uploader widget allowing the client to upload cherry leaf images for instant evaluation. Key features include:
   - Images must be in .jpeg format.
-  - Multiple images can be uploaded at once, up to 200MB.
+  - Multiple images can be uploaded at once
   - The dashboard displays the uploaded image and the prediction, indicating if the leaf is infected with powdery mildew and the associated probability.
 
 ### Business Requirement 3: Report
@@ -184,18 +208,154 @@ This user story is addressed by implementing the following task in the Streamlit
 
 ## ML Business Case
 
-- In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+### Powdery Mildew Classificator
+
+We aim to develop a machine learning model to determine whether a cherry leaf is infected with powdery mildew, using the image dataset provided by Farmy & Foods. This is a supervised learning problem, specifically a binary classification task.
+
+#### Objective
+
+The primary goal is to equip farmers with a fast and reliable tool for detecting powdery mildew, enhancing the current manual inspection process.
+
+#### Success Metrics
+
+- Achieve an accuracy of 97% or higher on the test set.
+
+#### Model Output
+
+The model will output a flag indicating the presence of powdery mildew on a leaf and the probability of infection. Farmers can upload images of leaves to the application for real-time predictions.
+
+#### Current Method
+
+Currently, farmers manually inspect each tree, spending about 30 minutes per tree to sample and visually check the leaves, which is time-consuming and prone to human error.
+
+#### Training Data
+
+The model will be trained on a dataset of 4,208 cherry leaf images, provided by Farmy & Foods and available on Kaggle.
+
 
 ## Dashboard Design
 
-- List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items, that your dashboard library supports.
-- Finally, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project, you were confident you would use a given plot to display an insight, but later, you chose another plot type).
+### Project Summary
+
+**Powdery Mildew Detector**
+
+Powdery mildew is a fungal disease that affects cherry trees, caused by the parasite *Posdosphaera clandestina*. As the fungus spreads, it creates a layer of mildew composed of numerous spores on the leaf surface. Visual indicators of infected leaves include:
+- Light-green, circular lesions appearing on either side of the leaf
+- A delicate white, cotton-like growth that eventually develops in the infected areas on either side of the leaf
+
+Several leaves, both infected and healthy, were collected and examined.
+
+**Project Dataset**
+
+The available dataset contains 4,208 files:
+- 2,104 images of healthy leaves
+- 2,104 images of infected leaves
+
+All images are photographed against a neutral background.
+
+### Page 2: Project Hypothesis and Validation
+
+This page provides detailed information on the project hypotheses, explanations, validations, and conclusions. See the **Hypothesis and Validation** section for more details.
+
+### Page 3: Powdery Mildew Detector
+
+This page addresses Business Requirements 2 and 3: Classification and Reporting. It includes:
+
+- **Image Upload:** A file uploader widget for users to upload cherry leaf images (JPEG format, multiple images up to 200MB).
+- **Instant Evaluation:** Display of the uploaded image along with a prediction statement indicating whether the leaf is infected, including the probability of infection.
+- **Report Generation:** After batch uploads, a downloadable CSV report with prediction results for the examined leaves.
+
+### Page 4: ML Performance Metrics
+
+This page displays performance metrics of the machine learning model, including:
+
+- Label frequencies for train, validation, and test sets.
+- Model history (accuracy and loss plots).
+- Model evaluation results on the test set.
 
 ## Unfixed Bugs
 
-- You will need to mention unfixed bugs and why they were unfixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable for consideration, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed.
+### Unfixed Bug: Model Overfitting and Hyperparameter Optimization
+
+The model training output is depicted in two graphs: one for loss and one for accuracy, both showing training and validation metrics.
+
+#### Loss Graph:
+1. **Initial Decrease**: Both training and validation loss start high and decrease significantly in the first few epochs, indicating effective learning.
+2. **Fluctuations**: Validation loss shows fluctuations, especially around epochs 3 and 13, suggesting potential overfitting.
+3. **Convergence**: Training and validation losses converge towards lower values overall, indicating positive training progress.
+
+#### Accuracy Graph:
+1. **Initial Increase**: Both training and validation accuracies increase rapidly in the initial epochs, demonstrating quick learning.
+2. **High Values**: Training and validation accuracies reach and stay above 0.95 for most of the training process, indicating good performance.
+3. **Fluctuations**: Validation accuracy shows some fluctuations, similar to validation loss, indicating possible overfitting or variability in the validation set.
+
+### Recommendations:
+1. **Regularization**: Add techniques like dropout, L2 regularization, or data augmentation to address fluctuations and potential overfitting.
+2. **Validation Strategy**: Ensure the validation set is representative of the overall dataset for stable validation metrics.
+3. **Learning Rate**: Experiment with adjusting the learning rate or using a scheduler to reduce it over time if fluctuations are significant.
+4. **Early Stopping**: Implement early stopping to prevent overfitting when validation loss stops improving.
+
+### Conclusion:
+The model exhibits strong learning capabilities and high accuracy, but shows signs of overfitting. Optimizing hyperparameters through adjustments in regularization, validation strategy, learning rate, and early stopping should help eliminate overfitting and improve overall performance.
+
+## The methodology known as the Cross-Industry Standard Process for Data Mining (CRISP-DM)
+CRISP-DM, short for Cross-Industry Standard Process for Data Mining, is a widely recognized framework for directing data mining projects.
+
+This methodology outlines the common stages of a project, detailing the tasks associated with each stage and explaining the connections between these tasks.
+As a process model, CRISP-DM offers a comprehensive view of the data mining life cycle.
+
+The process is tracked using the Kanban Board available in the project section of this [GitHub repository](https://github.com/users/greglabo78/projects/8/views/1)
+
+
 
 ## Deployment
+
+### Project Hosting
+
+The project is developed and hosted on GitHub and deployed using Heroku.
+
+### Creating the Heroku App
+
+Follow these steps to deploy the project on Heroku:
+
+1. Create a `requirements.txt` file in GitHub listing the necessary dependencies for the program.
+2. Set the `runtime.txt` to specify the Python version compatible with Heroku-20 stack.
+3. Push the latest changes to GitHub and navigate to your Heroku account to create and deploy the app.
+4. Choose "CREATE NEW APP", provide a unique name, and select a geographical region.
+5. Add `heroku/python` buildpack from the Settings tab.
+6. Under the Deploy tab, choose GitHub as the deployment method, connect to GitHub, and select the project's repository.
+7. Select the desired branch to deploy and click "Deploy Branch".
+8. Enable Automatic Deploys or manually deploy the branch.
+9. Wait for the logs to confirm that dependencies are installed and the app is built.
+10. Access the app via a URL similar to `https://your-projects-name.herokuapp.com/`.
+11. If the slug size is too large, use a `.slugignore` file to exclude unnecessary large files.
+
+### Forking the Repository
+
+Forking this GitHub repository creates a copy in your GitHub account. Steps to fork the repository:
+1. Locate the GitHub repository of this project and log into your GitHub account.
+2. Click the "Fork" button at the top right of the page, above "Settings".
+3. Choose where to fork the repository (e.g., your account).
+4. You now have a copy of the original repository in your GitHub account.
+
+### Making a Local Clone
+
+Cloning a repository downloads a complete copy of all repository data. Steps to clone a repository:
+1. Locate the GitHub repository of this project and log into your GitHub account.
+2. Click the "Code" button at the top right of the page.
+3. Choose an option: Clone with HTTPS, Open with GitHub Desktop, or Download ZIP.
+4. To clone using HTTPS, copy the link under "Clone with HTTPS".
+5. Open Git Bash and navigate to your desired location.
+6. Type:
+    ```sh
+    $ git clone https://github.com/your-username/mildew-detection-in-cherry-leaves.git
+    ```
+7. Press Enter and wait for the repository to be cloned.
+
+For more detailed instructions, refer to the GitHub documentation.
+
+You can find the live link to the site here: [Powdery Mildew Detector](https://your-projects-name.herokuapp.com/)
+
 
 ### Heroku
 
@@ -210,26 +370,47 @@ This user story is addressed by implementing the following task in the Streamlit
 5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
 6. If the slug size is too large, then add large files not required for the app to the .slugignore file.
 
+## Technologies Used
+
+### Platforms
+- **Heroku:** Used to deploy this project.
+- **Jupyter Notebook:** Utilized for coding and editing the project.
+- **Kaggle:** Source for downloading datasets for this project.
+- **GitHub:** Repository for storing project code after being pushed from Gitpod.
+- **Gitpod:** IDE used for writing code, with its terminal used to commit to GitHub and push to GitHub Pages.
+
+### Languages
+- **Python**
+- **Markdown**
+
+
 ## Main Data Analysis and Machine Learning Libraries
 
-- Here, you should list the libraries used in the project and provide an example(s) of how you used these libraries.
+- tensorflow-cpu 2.6.0  used for creating the model
+- numpy 1.19.2          used for converting to array 
+- scikit-learn 0.24.2   used for evaluating the model
+- streamlit 0.85.0      used for creating the dashboard
+- pandas 1.1.2          used for creating/saving as dataframe
+- matplotlib 3.3.1      used for plotting the sets' distribution
+- keras 2.6.0           used for setting model's hyperparamters
+- plotly 5.12.0         used for plotting the model's learning curve 
+- seaborn 0.11.0        used for plotting the model
+
 
 ## Credits
 
-- In this section, you need to reference where you got your content, media and from where you got extra help. It is common practice to use code from other repositories and tutorials. However, it is necessary to be very specific about these sources to avoid plagiarism.
-- You can break the credits section up into Content and Media, depending on what you have included in your project.
+### Content Sources
+- The leaves dataset was sourced from Kaggle and created by Code Institute.
+- The description of powdery mildew was referenced from Garden Design and Almanac.
+- The CRISP-DM steps utilized in this GitHub project were modeled after IBM's Introduction to CRISP-DM articles.
 
-### Content
+### Code and Templates
+- The project template was provided by Code Institute on GitHub and their website.
+- Streamlit dashboard pages, data collection, and data visualization Jupyter notebooks were inspired by Code Institute's Walkthrough Project 01 and served as a guiding example for this project.
+- cla-cif /cherry-powdery-Mildew detector was used as a north star and source of inspiration in the development of this project.
 
-- The text for the Home page was taken from Wikipedia Article A.
-- Instructions on how to implement form validation on the Sign-Up page were taken from [Specific YouTube Tutorial](https://www.youtube.com/).
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/).
 
-### Media
+## Acknowledgements
+I would like to express my sincere gratitude to my mentor, Mo'Shami, for his invaluable support and guidance throughout this project. Additionally, I extend my thanks to Code Institute for their continuous support during my journey, which has culminated in this final milestone. Thanks to Tomislav an alumnus of code institue whose guidance in times of difficulty is priceless , thank you for your guidance and contionous motivation to enable me see this through to the end.
 
-- The photos used on the home and sign-up page are from This Open-Source site.
-- The images used for the gallery page were taken from this other open-source site.
 
-## Acknowledgements (optional)
-
-- Thank the people who provided support throughout this project.
