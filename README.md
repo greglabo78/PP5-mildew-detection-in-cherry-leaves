@@ -24,11 +24,13 @@ This project aims to build a dashboard to detect whether a cherry leaf is health
 7. [Dashboard design](#dashboard-design)
 8. [Unfixed Bugs](#unfixed-bugs)
 9. [The methodology known as the Cross-Industry Standard Process for Data Mining (CRISP-DM)](#the-methodology-known-as-the-cross-industry-standard-process-for-data-mining-crisp-dm)
-10. [Deployment](#deployment)
-11. [Technology Used](#technologies-used)
-12. [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
-13. [Acknowledgements](#acknowledgements)
-14. [Credits](#credits)
+10. [Testing](#testing)
+11. [Validation](#validation)
+12. [Deployment](#deployment)
+13. [Technology Used](#technologies-used)
+14. [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
+15. [Acknowledgements](#acknowledgements)
+16. [Credits](#credits)
 
 
 ## Dataset Content
@@ -306,6 +308,79 @@ As a process model, CRISP-DM offers a comprehensive view of the data mining life
 
 The process is tracked using the Kanban Board available in the project section of this [GitHub repository](https://github.com/users/greglabo78/projects/8/views/1)
 
+## Testing
+### Manual Testing
+
+### User Story Testing
+
+#### Business Requirement 1: Data Visualization
+
+#### Navigation
+
+**As a client, I can navigate easily through an interactive dashboard so that I can view and understand the data.**
+
+| Feature         | Action                                   | Expected Result                                    | Actual Result         |
+|-----------------|------------------------------------------|---------------------------------------------------|-----------------------|
+| Navigation bar  | Selecting buttons in the side menu       | Selected page displayed with correct information   | Functions as expected |
+
+#### Leaves Visualizer Page
+
+**As a client, I can view visual graphs of average images, image differences, and variabilities between healthy and infected cherry leaves, so that I can identify them more easily.**
+
+| Feature                             | Action                              | Expected Result                                     | Actual Result         |
+|-------------------------------------|-------------------------------------|----------------------------------------------------|-----------------------|
+| Average and variability images checkbox | Ticking the checkbox                 | Relevant image plots are rendered                   | Functions as expected |
+| Difference between average image checkbox | Ticking the checkbox                 | Relevant image plots are rendered                   | Functions as expected |
+| Image montage checkbox              | Ticking the Image Montage checkbox  | Dropdown select menu appears for label selection along with the button "Create montage" | Functions as expected |
+| Image montage creation button       | After selecting the label, pressing 'Create Montage' button | Relevant image montage of the correct label is displayed | Functions as expected |
+
+#### Business Requirement 2: Classification
+
+#### Powdery Mildew Detection Page
+
+**As a client, I can upload image(s) of cherry leaves to the dashboard so that I can run the ML model and get an immediate, accurate prediction of powdery mildew.**
+
+| Feature        | Action                                      | Expected Result                                         | Actual Result         |
+|----------------|---------------------------------------------|--------------------------------------------------------|-----------------------|
+| File uploader  | Uploading cleaned image data via Browse files button | The result is a displayed prediction of Healthy or Infected leaf with a graphical display of probabilities | Functions as expected |
+
+**As a client, I can save model predictions in a timestamped CSV file so that I can have a documented history of the predictions made.**
+
+| Feature             | Action                        | Expected Result                                                   | Actual Result         |
+|---------------------|-------------------------------|------------------------------------------------------------------|-----------------------|
+| Download Report link| Clicking on the download link | A CSV file with timestamps in the name and prediction details is saved on the client's machine | Functions as expected |
+
+#### Business Requirement 3: Report
+
+**As a client, I can obtain a report of the ML predictions on new leaves.**
+
+| Feature             | Action                        | Expected Result                                                   | Actual Result         |
+|---------------------|-------------------------------|------------------------------------------------------------------|-----------------------|
+| Download Report link| Clicking on the download link | A CSV file with timestamps in the name and prediction details is saved on the client's machine | Functions as expected |
+
+
+## Validation
+
+#### Python Code Validation
+
+The Python code was validated for PEP8 standards as follows:
+
+#### Jupyter Notebooks
+
+1. Installed the `pycodestyle` package:
+    ```sh
+    pip install pep8 pycodestyle pycodestyle_magic
+    ```
+2. Added the following cell at the top of the notebook:
+    ```python
+    %load_ext pycodestyle_magic
+    %pycodestyle_on
+    ```
+3. Ran the cells in a copy of the notebooks and then edited the originals based on the errors indicated.
+
+#### Streamlit App Pages and Source Code Files
+
+For the Streamlit app pages and source code files, the [CI Python Linter](https://pep8ci.herokuapp.com/) was used for validation.
 
 
 ## Deployment
